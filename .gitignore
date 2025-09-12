@@ -1,0 +1,15 @@
+.env
+venv/
+.venv/
+env/
+.env/
+AIAgent/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+build/
+dist/
+*.egg-info/
+ipynb files/
+.ipynb_checkpoints/
