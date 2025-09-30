@@ -5,8 +5,10 @@ from dotenv import load_dotenv
 from mcp.server.fastmcp import FastMCP
 from typing import Dict
 
-# .env 파일에서 환경 변수를 로드
-load_dotenv()
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+dotenv_path = os.path.join(project_root, '.env')
+load_dotenv(dotenv_path=dotenv_path)
 
 mcp = FastMCP("GPS_mcp_server")
 

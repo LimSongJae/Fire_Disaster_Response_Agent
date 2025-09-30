@@ -5,8 +5,11 @@ from datetime import datetime, timedelta
 from dotenv import load_dotenv
 from mcp.server.fastmcp import FastMCP
 
-load_dotenv()
-# 서버 이름 수정: SNS_mcp_server -> disaster_mcp_server
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+dotenv_path = os.path.join(project_root, '.env')
+load_dotenv(dotenv_path=dotenv_path)
+
 mcp = FastMCP("disaster_mcp_server") 
 
 def fetch_safety_data(url: str, service_key: str, params: dict) -> dict:

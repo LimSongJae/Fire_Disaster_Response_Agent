@@ -19,10 +19,12 @@ async def sns_agent_node(state: GraphState) -> GraphState:
     all_tools = mcp_client.get_tools()
     filtered_tools = [tool for tool in all_tools if tool.name in allowed_tool_names]
     
-    prompt = f"""
+    prompt = f""" 
     ## 역할 (Role)
-    당신은 '화재 재난 대응을 위한 SNS 데이터 분석 에이전트'입니다.
-    사용자의 현재 위치 주소: {state["GPS"]}
+    당신은 SNS 데이터 분석가로서 주요 SNS 플랫폼의 화재 관련 최신 게시물이나 댓글 등을 실시간으로 수집하고 분석합니다.
+    지난 24시간 동안 수집된 SNS 데이터를 분석하여 SNS 분석 보고서를 작성해주세요.
+    
+    사용자의 현재 위치: {state["GPS"]}
 
     ## 최종 목표 (Goal)
     사용자 위치 근처의 잠재적 화재 상황을 파악하기 위해, 정해진 절차에 따라 YouTube와 Threads 데이터를 교차 검색 및 분석하여 신뢰도를 평가하고 종합적인 상황 보고서를 제공하는 것.

@@ -20,7 +20,6 @@ async def run_workflow(question: str):
         "SNS": "",
         "rag_context": "",
         "structured_response": None,
-        # ❗❗❗ 이 부분이 반드시 존재해야 합니다 ❗❗❗
         "remaining_steps": 15,
     }
     
