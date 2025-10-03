@@ -38,7 +38,7 @@ async def _initial_analysis(state: GraphState) -> GraphState:
     user_interaction_agent = create_react_agent(
         llm,
         tools=[],
-        state_modifier=prompt,
+        prompt=prompt,
         state_schema=GraphState,
         response_format=UserInteractionResponse,
     )
@@ -70,7 +70,7 @@ async def _generate_final_response(state: GraphState) -> GraphState:
         'sequentialthinking_tools',
     }
     
-    all_tools = mcp_client.get_tools()
+    all_tools = await mcp_client.get_tools()
     filtered_tools = [tool for tool in all_tools if tool.name in allowed_tool_names]
 
     refined_query = f"""
@@ -115,7 +115,7 @@ async def _generate_final_response(state: GraphState) -> GraphState:
     final_agent = create_react_agent(
         llm,
         tools=filtered_tools,
-        state_modifier=final_prompt,
+        prompt=final_prompt,
         state_schema=GraphState,
     )
     

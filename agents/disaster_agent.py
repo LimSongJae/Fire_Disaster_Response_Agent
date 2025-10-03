@@ -14,7 +14,7 @@ async def disaster_agent_node(state: GraphState) -> GraphState:
         'getKMAWeatherWarning',
     }
     
-    all_tools = mcp_client.get_tools()
+    all_tools = await mcp_client.get_tools()
     filtered_tools = [tool for tool in all_tools if tool.name in allowed_tool_names]
     
     prompt = f"""
@@ -30,7 +30,7 @@ async def disaster_agent_node(state: GraphState) -> GraphState:
     disaster_agent = create_react_agent(
         llm,
         tools=filtered_tools,
-        state_modifier=prompt,
+        prompt=prompt,
         state_schema=GraphState,
     )
     

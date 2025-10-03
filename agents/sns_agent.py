@@ -16,7 +16,7 @@ async def sns_agent_node(state: GraphState) -> GraphState:
         'get_fire_related_threads_with_replies',
     }
     
-    all_tools = mcp_client.get_tools()
+    all_tools = await mcp_client.get_tools()
     filtered_tools = [tool for tool in all_tools if tool.name in allowed_tool_names]
     
     prompt = f""" 
@@ -72,7 +72,7 @@ async def sns_agent_node(state: GraphState) -> GraphState:
     sns_agent = create_react_agent(
         llm,
         tools=filtered_tools,
-        state_modifier=prompt,
+        prompt=prompt,
         state_schema=GraphState,
     )
     

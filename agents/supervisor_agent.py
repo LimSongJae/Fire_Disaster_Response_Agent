@@ -19,13 +19,13 @@ async def supervisor_node(state: GraphState) -> GraphState:
     # 1. GPS 정보 수집
     print("--- 1. GPS 정보 수집 시작 ---")
 
-    all_tools = mcp_client.get_tools()
+    all_tools = await mcp_client.get_tools()
     gps_tool = [tool for tool in all_tools if tool.name == "get_latest_location"]
 
     gps_agent = create_react_agent(
         llm,
         tools=gps_tool, # 필터링된 gps_tool을 전달
-        state_modifier="get_latest_location 도구를 사용해 사용자의 현재 GPS 기반 주소를 찾아주세요.",
+        prompt="get_latest_location 도구를 사용해 사용자의 현재 GPS 기반 주소를 찾아주세요.",
         state_schema=GraphState,
         response_format=GPSResponse,
     )

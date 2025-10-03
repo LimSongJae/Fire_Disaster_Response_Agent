@@ -29,7 +29,7 @@ class MCPClientManager:
                  raise ValueError("MCP 서버 실행에 필요한 경로가 .env 파일에 올바르게 설정되지 않았습니다.")
             
             try:
-                cls.client = await MultiServerMCPClient({
+                cls.client = MultiServerMCPClient({
                     "news_mcp_server": {
                         "command": PYTHON_EXECUTABLE_PATH,
                         "args": [NEWS_MCP_SERVER_PATH],
@@ -72,7 +72,7 @@ class MCPClientManager:
                         ],
                         "transport": "stdio",
                     },
-                }).__aenter__()
+                })
             except Exception as e:
                 print(f"MCP 클라이언트 초기화 오류: {e}")
                 raise
@@ -82,5 +82,5 @@ class MCPClientManager:
     async def close(cls):
         """MCP 클라이언트 연결을 종료합니다."""
         if cls.client:
-            await cls.client.__aexit__(None, None, None)
+            # 새로운 API에서는 별도의 종료 메서드가 필요할 수 있습니다
             cls.client = None
