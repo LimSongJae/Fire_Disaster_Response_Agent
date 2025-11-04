@@ -107,24 +107,24 @@ async def callback(request: KakaoCallbackRequest):
         response_text = "죄송합니다, 요청을 처리하는 중에 오류가 발생했습니다. 잠시 후 다시 시도해주세요."
         
     # 최종 답변을 카카오 스킬 응답 형식으로 반환합니다.
-    return {
-        "version": "2.0",
-        "data": {
-            "text": response_text
-        }
-    }
     # return {
     #     "version": "2.0",
-    #     "template": {
-    #         "outputs": [
-    #             {
-    #                 "simpleText": {
-    #                     "text": response_text
-    #                 }
-    #             }
-    #         ]
+    #     "data": {
+    #         "text": response_text
     #     }
     # }
+    return {
+        "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": response_text
+                    }
+                }
+            ]
+        }
+    }
 
 @app.get("/health")
 async def health():
