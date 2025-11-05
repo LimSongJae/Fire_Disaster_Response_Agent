@@ -33,7 +33,7 @@ def _get_replies_for_thread(media_id: str, access_token: str) -> List[Dict[str, 
 @mcp.tool()
 def get_fire_related_threads_with_replies() -> str:
     """
-    '화재' 키워드가 포함된 최신 Threads 게시물과 각 게시물의 댓글을 검색합니다.
+    '화재' TAG가 포함된 최신 Threads 게시물과 각 게시물의 댓글을 검색합니다.
     지난 24시간 동안 작성된 최신 게시물 5개를 검색하고, 댓글과 함께 반환합니다.
     """
     ACCESS_TOKEN = os.getenv("THREADS_ACCESS_TOKEN")

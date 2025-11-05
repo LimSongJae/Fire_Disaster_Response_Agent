@@ -50,14 +50,37 @@ class MCPClientManager:
                         "args": [SNS_MCP_SERVER_PATH],
                         "transport": "stdio",
                     },
-                    "mcp-server-serper": {
+                    # "mcp-server-serper": {
+                    #     "command": "npx",
+                    #     "args": ["-y", "@smithery/cli@latest", "run", "@marcopesani/mcp-server-serper", "--key", SMITHERY_KEY, "--profile", SMITHERY_PROFILE],
+                    #     "transport": "stdio",
+                    # },
+                    "firecrawl-mcp-server": {
                         "command": "npx",
-                        "args": ["-y", "@smithery/cli@latest", "run", "@marcopesani/mcp-server-serper", "--key", SMITHERY_KEY, "--profile", SMITHERY_PROFILE],
+                        "args": [
+                            "-y",
+                            "@smithery/cli@latest",
+                            "run",
+                            "@Krieg2065/firecrawl-mcp-server",
+                            "--key",
+                            "484ebb5c-bd4f-4247-a1c6-e1223235a463",
+                            "--profile",
+                            "independent-ocelot-465lJ3"
+                        ],
                         "transport": "stdio",
                     },
-                    "py-mcp-youtube-toolbox": {
+                    "mcp-youtube": {
                         "command": "npx",
-                        "args": ["-y", "@smithery/cli@latest", "run", "@jikime/py-mcp-youtube-toolbox", "--key", SMITHERY_KEY, "--profile", SMITHERY_PROFILE],
+                        "args": [
+                            "-y",
+                            "@smithery/cli@latest",
+                            "run",
+                            "@kirbah/mcp-youtube",
+                            "--key",
+                            SMITHERY_KEY,
+                            "--profile",
+                            SMITHERY_PROFILE
+                        ],
                         "transport": "stdio",
                     },
                     "mcp-sequentialthinking-tools": {
@@ -68,7 +91,7 @@ class MCPClientManager:
                             "run",
                             "@xinzhongyouhai/mcp-sequentialthinking-tools",
                             "--key",
-                            SMITHERY_KEY
+                            SMITHERY_KEY,
                         ],
                         "transport": "stdio",
                     },

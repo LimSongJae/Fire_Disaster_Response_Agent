@@ -34,7 +34,7 @@ def get_address_from_coords(latitude: float, longitude: float, rest_api_key: str
 def get_latest_location() -> Dict:
     """최신 사용자 위치 정보와 카카오 주소 반환"""
     try:
-        with open("location.json", "r") as f:
+        with open("mcp_servers/location.json", "r") as f:
             data = json.load(f)
         latitude = data['latitude']
         longitude = data['longitude']
