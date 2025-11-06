@@ -10,8 +10,9 @@ async def new_agent_node(state: GraphState) -> GraphState:
     
     allowed_tool_names = {
         "get_naver_news",
-        "firecrawl_scrape",
-        "get_yonhap_news"
+        # "firecrawl_scrape",
+        "get_yonhap_news",
+        "scrape",
     }
 
     all_tools = await mcp_client.get_tools()
@@ -24,7 +25,7 @@ async def new_agent_node(state: GraphState) -> GraphState:
     
     ## 뉴스데이터 수집 및 분석 지시사항
     1. 'get_naver_news' tool을 사용하여 한국의 화재 관련 네이버 뉴스를 2건 검색하세요.
-    2. 검색 결과에서 나온 네이버 뉴스 2건의 URL(link)들을 'firecrawl_scrape' tool을 사용하여 전체 기사 내용을 추출하세요.
+    2. 검색 결과에서 나온 네이버 뉴스 2건의 URL(link)들을 'scrape' tool을 사용하여 전체 기사 내용을 추출하세요.
     3. 'get_yonhap_news' tool을 사용하여 한국의 화재 관련 연합 뉴스를 5건 검색하세요.
     4. 수집한 뉴스 기사들을 기반으로 분석하세요.
     """

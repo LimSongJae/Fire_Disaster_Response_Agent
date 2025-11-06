@@ -67,7 +67,7 @@ async def _generate_final_response(state: GraphState) -> GraphState:
     mcp_client = await MCPClientManager.get_client()
     
     allowed_tool_names = {
-        'sequentialthinking_tools',
+        'sequentialthinking',
     }
     
     all_tools = await mcp_client.get_tools()

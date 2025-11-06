@@ -8,6 +8,10 @@ requests==2.32.5
 httpx==0.28.1
 aiohttp==3.11.18
 
+# --- Streamlit 프론트엔드 ---
+streamlit
+watchdog
+
 # --- LangChain & LangGraph (현재 로컬 버전에 맞춤) ---
 langchain==0.3.27
 langchain-core==0.3.76
@@ -18,6 +22,10 @@ langchain-openai==0.3.14
 langchain-chroma==0.2.6
 aiosqlite==0.21.0
 langgraph-checkpoint-sqlite==2.0.11
+
+# --- Google / YouTube API (신규 추가) ---
+google-api-python-client
+youtube-transcript-api
 
 # --- 기타 프로젝트 핵심 의존성 ---
 langchain-mcp-adapters==0.1.10

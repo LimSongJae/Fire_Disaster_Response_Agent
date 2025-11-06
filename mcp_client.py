@@ -50,18 +50,13 @@ class MCPClientManager:
                         "args": [SNS_MCP_SERVER_PATH],
                         "transport": "stdio",
                     },
-                    # "mcp-server-serper": {
-                    #     "command": "npx",
-                    #     "args": ["-y", "@smithery/cli@latest", "run", "@marcopesani/mcp-server-serper", "--key", SMITHERY_KEY, "--profile", SMITHERY_PROFILE],
-                    #     "transport": "stdio",
-                    # },
-                    "firecrawl-mcp-server": {
+                    "mcp-server-serper": {
                         "command": "npx",
                         "args": [
                             "-y",
                             "@smithery/cli@latest",
                             "run",
-                            "@Krieg2065/firecrawl-mcp-server",
+                            "@marcopesani/mcp-server-serper",
                             "--key",
                             "484ebb5c-bd4f-4247-a1c6-e1223235a463",
                             "--profile",
@@ -69,29 +64,31 @@ class MCPClientManager:
                         ],
                         "transport": "stdio",
                     },
-                    "mcp-youtube": {
+                    # "firecrawl-mcp-server": { serper 사용, firecrawl 사용 x
+                    #     "command": "npx",
+                    #     "args": [
+                    #         "-y",
+                    #         "@smithery/cli@latest",
+                    #         "run",
+                    #         "@Krieg2065/firecrawl-mcp-server",
+                    #         "--key",
+                    #         "484ebb5c-bd4f-4247-a1c6-e1223235a463",
+                    #         "--profile",
+                    #         "independent-ocelot-465lJ3"
+                    #     ],
+                    #     "transport": "stdio",
+                    # },
+                    "server-sequential-thinking": {
                         "command": "npx",
                         "args": [
                             "-y",
                             "@smithery/cli@latest",
                             "run",
-                            "@kirbah/mcp-youtube",
+                            "@smithery-ai/server-sequential-thinking",
                             "--key",
-                            SMITHERY_KEY,
+                            "484ebb5c-bd4f-4247-a1c6-e1223235a463",
                             "--profile",
-                            SMITHERY_PROFILE
-                        ],
-                        "transport": "stdio",
-                    },
-                    "mcp-sequentialthinking-tools": {
-                        "command": "npx",
-                        "args": [
-                            "-y",
-                            "@smithery/cli@latest",
-                            "run",
-                            "@xinzhongyouhai/mcp-sequentialthinking-tools",
-                            "--key",
-                            SMITHERY_KEY,
+                            "independent-ocelot-465lJ3"
                         ],
                         "transport": "stdio",
                     },

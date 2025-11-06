@@ -42,7 +42,7 @@ if prompt := st.chat_input("궁금한 재난 상황을 입력하세요 (예: 강
 
     # 2. AI 응답 생성 (기다리는 동안 스피너 표시)
     with st.chat_message("assistant"):
-        with st.spinner("AI 에이전트가 분석 중입니다... (최대 1분 소요)"):
+        with st.spinner("AI 에이전트가 분석 중입니다..."):
             try:
                 # 비동기 함수(run_workflow)를 Streamlit에서 실행
                 # ⭐️ 중요: Streamlit은 asyncio 루프가 이미 실행 중일 수 있으므로 
