@@ -42,13 +42,20 @@ async def supervisor_node(state: GraphState) -> GraphState:
     parallel_results = await asyncio.gather(
         new_agent_node(current_state),
         sns_agent_node(current_state),
-        disaster_agent_node(current_state)
+        disaster_agent_node(current_state),
+        return_exceptions=True
     )
     print("--- 모든 하위 에이전트 병렬 실행 완료 ---\n")
     
     # 3. 모든 결과 병합
     print("--- 3. 모든 결과 병합 ---")
     for agent_result in parallel_results:
+        
+        if isinstance(agent_result, Exception):
+            # 에러가 발생한 경우, 로그를 남기고 다음 결과로 넘어갑니다.
+            print(f"🚨 [Supervisor] 하위 에이전트 실행 중 오류 발생: {agent_result}")
+            continue
+        
         # 상태 업데이트: 키가 존재하는 경우에만 값을 업데이트
         if agent_result.get("news") is not None:
             current_state['news'] = agent_result["news"]
