@@ -64,14 +64,14 @@ async def _generate_final_response(state: GraphState) -> GraphState:
     print("\n======= [Node] User Interaction Agent (최종 답변 생성) 실행 =======")
     print("재난 분석 완료. RAG 시스템을 조회하여 최종 답변을 생성합니다...")
     
-    mcp_client = await MCPClientManager.get_client()
+    # mcp_client = await MCPClientManager.get_client()
     
-    allowed_tool_names = {
-        'sequentialthinking',
-    }
+    # allowed_tool_names = {
+    #     'sequentialthinking',
+    # }
     
-    all_tools = await mcp_client.get_tools()
-    filtered_tools = [tool for tool in all_tools if tool.name in allowed_tool_names]
+    # all_tools = await mcp_client.get_tools()
+    # filtered_tools = [tool for tool in all_tools if tool.name in allowed_tool_names]
 
     refined_query = f"""
     현재 상황: {state.get('news', '')} {state.get('disaster', '')}
@@ -114,7 +114,8 @@ async def _generate_final_response(state: GraphState) -> GraphState:
 
     final_agent = create_react_agent(
         llm,
-        tools=filtered_tools,
+        # tools=filtered_tools,
+        tools=[],
         prompt=final_prompt,
         state_schema=GraphState,
     )

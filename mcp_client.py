@@ -50,20 +50,20 @@ class MCPClientManager:
                         "args": [SNS_MCP_SERVER_PATH],
                         "transport": "stdio",
                     },
-                    "mcp-server-serper": {
-                        "command": "npx",
-                        "args": [
-                            "-y",
-                            "@smithery/cli@latest",
-                            "run",
-                            "@marcopesani/mcp-server-serper",
-                            "--key",
-                            "484ebb5c-bd4f-4247-a1c6-e1223235a463",
-                            "--profile",
-                            "independent-ocelot-465lJ3"
-                        ],
-                        "transport": "stdio",
-                    },
+                    # "mcp-server-serper": {
+                    #     "command": "npx",
+                    #     "args": [
+                    #         "-y",
+                    #         "@smithery/cli@latest",
+                    #         "run",
+                    #         "@marcopesani/mcp-server-serper",
+                    #         "--key",
+                    #         "484ebb5c-bd4f-4247-a1c6-e1223235a463",
+                    #         "--profile",
+                    #         "independent-ocelot-465lJ3"
+                    #     ],
+                    #     "transport": "stdio",
+                    # },
                     # "firecrawl-mcp-server": { serper 사용, firecrawl 사용 x
                     #     "command": "npx",
                     #     "args": [
@@ -78,20 +78,20 @@ class MCPClientManager:
                     #     ],
                     #     "transport": "stdio",
                     # },
-                    "server-sequential-thinking": {
-                        "command": "npx",
-                        "args": [
-                            "-y",
-                            "@smithery/cli@latest",
-                            "run",
-                            "@smithery-ai/server-sequential-thinking",
-                            "--key",
-                            "484ebb5c-bd4f-4247-a1c6-e1223235a463",
-                            "--profile",
-                            "independent-ocelot-465lJ3"
-                        ],
-                        "transport": "stdio",
-                    },
+                    # "server-sequential-thinking": {
+                    #     "command": "npx",
+                    #     "args": [
+                    #         "-y",
+                    #         "@smithery/cli@latest",
+                    #         "run",
+                    #         "@smithery-ai/server-sequential-thinking",
+                    #         "--key",
+                    #         "484ebb5c-bd4f-4247-a1c6-e1223235a463",
+                    #         "--profile",
+                    #         "independent-ocelot-465lJ3"
+                    #     ],
+                    #     "transport": "stdio",
+                    # },
                 })
             except Exception as e:
                 print(f"MCP 클라이언트 초기화 오류: {e}")

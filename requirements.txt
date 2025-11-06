@@ -12,6 +12,9 @@ aiohttp==3.11.18
 streamlit
 watchdog
 
+# --- Firecrawl ---
+firecrawl-py
+
 # --- LangChain & LangGraph (현재 로컬 버전에 맞춤) ---
 langchain==0.3.27
 langchain-core==0.3.76
