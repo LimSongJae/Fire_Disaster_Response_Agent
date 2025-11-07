@@ -4,19 +4,8 @@ from state import GraphState
 from llm_setup import llm
 from mcp_client import MCPClientManager
 
-async def new_agent_node(state: GraphState) -> GraphState:
+async def new_agent_node(state: GraphState, tools) -> GraphState:
     print("======= [Sub-agent] News Agent 실행 =======")
-    mcp_client = await MCPClientManager.get_client()
-    
-    allowed_tool_names = {
-        "get_naver_news",
-        # "firecrawl_scrape",
-        "get_yonhap_news",
-        "scrape",
-    }
-
-    all_tools = await mcp_client.get_tools()
-    filtered_tools = [tool for tool in all_tools if tool.name in allowed_tool_names]
     
     prompt = f"""
     당신은 화재 뉴스 데이터 분석가로서 국내 주요 언론사의 화재 재난 관련 최신 뉴스를 실시간으로 수집하고 분석합니다.
@@ -32,7 +21,7 @@ async def new_agent_node(state: GraphState) -> GraphState:
     
     news_agent = create_react_agent(
         llm,
-        tools=filtered_tools,
+        tools=tools,
         prompt=prompt,
         state_schema=GraphState,
     )

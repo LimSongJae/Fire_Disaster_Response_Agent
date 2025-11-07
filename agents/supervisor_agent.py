@@ -21,7 +21,10 @@ async def supervisor_node(state: GraphState) -> GraphState:
 
     all_tools = await mcp_client.get_tools()
     gps_tool = [tool for tool in all_tools if tool.name == "get_latest_location"]
-
+    news_tools = [t for t in all_tools if t.name in {"get_naver_news","get_yonhap_news","scrape"}]
+    sns_tools = [t for t in all_tools if t.name in {'getVideoDetails','searchVideos','getTranscripts','getVideoComments','get_fire_related_threads_with_replies'}]
+    disaster_tools = [t for t in all_tools if t.name in {'getDisasterMessage','getForestFires','getKMAWeatherWarning'}]
+    
     gps_agent = create_react_agent(
         llm,
         tools=gps_tool, # 필터링된 gps_tool을 전달
@@ -40,9 +43,9 @@ async def supervisor_node(state: GraphState) -> GraphState:
     # 2. 하위 에이전트 병렬 실행
     print("\n--- 2. 하위 에이전트 병렬 실행 ---")
     parallel_results = await asyncio.gather(
-        new_agent_node(current_state),
-        sns_agent_node(current_state),
-        disaster_agent_node(current_state),
+        new_agent_node(current_state, news_tools),
+        sns_agent_node(current_state, sns_tools),
+        disaster_agent_node(current_state, disaster_tools),
         return_exceptions=True
     )
     print("--- 모든 하위 에이전트 병렬 실행 완료 ---\n")

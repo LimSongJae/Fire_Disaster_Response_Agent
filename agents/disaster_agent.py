@@ -4,18 +4,8 @@ from state import GraphState
 from llm_setup import llm
 from mcp_client import MCPClientManager
 
-async def disaster_agent_node(state: GraphState) -> GraphState:
+async def disaster_agent_node(state: GraphState, tools) -> GraphState:
     print("======= [Sub-agent] Disaster Agent 실행 =======")
-    mcp_client = await MCPClientManager.get_client()
-    
-    allowed_tool_names = {
-        'getDisasterMessage',
-        'getForestFires',
-        'getKMAWeatherWarning',
-    }
-    
-    all_tools = await mcp_client.get_tools()
-    filtered_tools = [tool for tool in all_tools if tool.name in allowed_tool_names]
     
     prompt = f"""
     당신은 공공 화재 재난 데이터 분석가 입니다.
@@ -29,7 +19,7 @@ async def disaster_agent_node(state: GraphState) -> GraphState:
     
     disaster_agent = create_react_agent(
         llm,
-        tools=filtered_tools,
+        tools=tools,
         prompt=prompt,
         state_schema=GraphState,
     )

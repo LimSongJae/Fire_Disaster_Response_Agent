@@ -1,7 +1,6 @@
 from pydantic import BaseModel, Field
 from langgraph.prebuilt import create_react_agent
 from langchain_core.messages import AIMessage
-from mcp_client import MCPClientManager
 from datetime import datetime
 
 from state import GraphState
@@ -63,15 +62,6 @@ async def _generate_final_response(state: GraphState) -> GraphState:
     """모든 에이전트의 분석 결과를 종합하고 RAG 검색을 통해 최종 답변을 생성합니다."""
     print("\n======= [Node] User Interaction Agent (최종 답변 생성) 실행 =======")
     print("재난 분석 완료. RAG 시스템을 조회하여 최종 답변을 생성합니다...")
-    
-    # mcp_client = await MCPClientManager.get_client()
-    
-    # allowed_tool_names = {
-    #     'sequentialthinking',
-    # }
-    
-    # all_tools = await mcp_client.get_tools()
-    # filtered_tools = [tool for tool in all_tools if tool.name in allowed_tool_names]
 
     refined_query = f"""
     현재 상황: {state.get('news', '')} {state.get('disaster', '')}
